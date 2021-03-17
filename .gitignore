@@ -1,5 +1,5 @@
 /.vs
 /VBackupManagerSetup/Debug
-Release
-bin
-obj
+/VBackupManagerSetup/Release
+/VBackupManager/bin
+/VBackupManager/obj
