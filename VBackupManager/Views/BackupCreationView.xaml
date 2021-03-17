@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="VBackupManager.BackupCreationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VBackupManager"
+             xmlns:prop="clr-namespace:VBackupManager.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="400">
+    <UserControl.DataContext>
+        <local:BackupCreationViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock VerticalAlignment="Center" Text="{x:Static prop:Resources.Backup_comment}" />
+            <TextBox Grid.Column="1" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Grid.Column="2" Command="{Binding CommandClearComment}" Content="{x:Static prop:Resources.Clear}" />
+        </Grid>
+
+        <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding MessageText}" Foreground="{Binding CommentForeground}" TextWrapping="Wrap" />
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal">
+                <Button Command="{Binding CommandOpenValheimSaveGamesPath}" Content="{x:Static prop:Resources.Open_Valheim_save_games_path}" />
+                <Button Command="{Binding CommandOpenArchivingPath}" Content="{x:Static prop:Resources.Open_archiving_path}" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <Button Command="{Binding CommandCreateBackup}" Content="{x:Static prop:Resources.Create_Backup}" />
+            </StackPanel>
+            
+        </Grid>        
+    </Grid>
+</UserControl>

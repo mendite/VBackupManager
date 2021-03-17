@@ -1,0 +1,38 @@
+﻿<Window x:Class="VBackupManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VBackupManager"
+        xmlns:prop="clr-namespace:VBackupManager.Properties"
+        mc:Ignorable="d"
+        Title="VBackupManager" Height="300" Width="550" MinHeight="300" MinWidth="550">
+    <Window.Resources>
+        
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Menu HorizontalAlignment="Right">
+            <MenuItem Header="{x:Static prop:Resources.About}" Click="MiAbout_Click" />
+        </Menu>
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="{x:Static prop:Resources.Create_Backup}">
+                <!--<local:BackupView />-->
+                <local:BackupCreationView />
+            </TabItem>
+
+            <TabItem Header="{x:Static prop:Resources.Backups_History}">
+                <local:BackupsHistoryView />
+            </TabItem>
+
+            <TabItem Header="{x:Static prop:Resources.Settings}">
+                <local:BackupSettingsView />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
